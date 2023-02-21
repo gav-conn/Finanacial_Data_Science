@@ -1,11 +1,8 @@
 import yfinance as yf
-import numpy as np
 import pandas as pd
 import datetime as dt
 from matplotlib import cm
 from matplotlib import pyplot as plt
-import mplfinance as mpf
-import talib as ta
 
 # Code to pull an option chain from yahoo finance
 def options_chain(symbol):
