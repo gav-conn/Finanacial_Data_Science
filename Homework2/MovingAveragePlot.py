@@ -18,12 +18,12 @@ SPY['Log Return'] = np.log(SPY['Close'].pct_change()+1)
 
 # Moving average
 BA["Price MA 15"] = BA["Close"].rolling(window = 15, min_periods = 1).mean()
-BA["Position"] = (BA["Close"] - BA["Price MA 15"]).apply(np.sign)
+BA["Position"] = (BA["Price MA 15"] - BA["Close"]).apply(np.sign)
 BA["Change in Position"] = (BA["Position"]-BA["Position"].shift(-1)).apply(np.sign)
 BA.iloc[0,-1] = 0
 
 # Plot Closing Price & MA
-plt.plot(BA["Close"], label = 'Closing Price', color = '#404040')
+plt.plot(BA["Close"], label = 'Closing Price of Boeing', color = '#404040')
 plt.plot(BA["Price MA 15"], label = "Moving Average (15-day)", color = '#15b0b0')
 
 # Plot Buy/Sell Markers
@@ -34,5 +34,7 @@ plt.plot(BA[BA['Change in Position'] == -1].index,
          BA["Price MA 15"][BA['Change in Position'] == -1], 
          'v', markersize = 10, color = '#b01515', label = 'Sell')
 
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
 plt.legend()
 plt.show()

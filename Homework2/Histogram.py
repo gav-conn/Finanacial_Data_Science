@@ -18,7 +18,7 @@ SPY['Log Return'] = np.log(SPY['Close'].pct_change()+1)
 
 # Histogram
 n, bins, patches = plt.hist(x=BA['Log Return'], bins='auto', color='b',
-                            alpha=0.75, rwidth=0.85)
+                            alpha=0.6, rwidth=0.85)
 plt.grid(axis='y', alpha=0.75)
 plt.xlabel('Value')
 plt.ylabel('Frequency')
